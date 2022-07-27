@@ -1,0 +1,39 @@
+
+/* .nav-link:hover {
+    background-color: #525252 !important
+} */
+
+/* .active{
+    background: #db1212c7;
+} */
+
+.dashboard{
+    background: #ece7e7e0;
+}
+
+
+.side-bar{
+    width: 20%;
+    margin: 25px;
+    border-radius: 15px;
+    height:92vh;
+    position: fixed;
+}
+
+.dashboard-content{
+    width: 78%;
+    position: absolute;
+    right: 0;
+}
+
+.dashboard a:hover {
+    color: #fff;
+}
+
+.nav-link .fa {
+    transition: all 1s
+}
+
+.nav-link:hover .fa {
+    transform: rotate(360deg)
+}

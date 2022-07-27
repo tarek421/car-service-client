@@ -1,0 +1,79 @@
+#footer {
+  background-color: #222;
+  color: #fff;
+  padding: 80px 0;
+}
+
+#footer p {
+  color: #acd2d8;
+  line-height: 30px;
+  margin: 0;
+}
+
+#footer h4 {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+#footer h4::after {
+  content: "";
+  height: 2px;
+  width: 50px;
+  position: absolute;
+  background: #a29ac2;
+  bottom: -5px;
+  left: 0px;
+}
+
+#footer .social-icon .svg-inline--fa {
+  font-size: 30px;
+}
+
+#footer .svg-inline--fa {
+display: var(--fa-display, inline-block);
+height: 1em;
+overflow: visible;
+vertical-align: -0.125em;
+font-size: 10px;
+}
+
+#footer .social-icon li {
+  color: #ccc;
+  line-height: 24px;
+  list-style: none;
+  margin-right: 25px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#footer ul {
+padding-left: 0;
+}
+
+
+#footer li,
+h6 {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+#footer li a:hover{
+  color: red;
+  transform: translateX(10px);
+}
+
+#footer li a {
+  color: #acd2d8;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+
+#footer .footer-contact h5{
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+#footer .footer-contact h5:hover{
+  color: red;
+}

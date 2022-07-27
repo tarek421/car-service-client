@@ -1,0 +1,12 @@
+.feature-card img{
+    width: 70px;
+}
+
+#core-features h1{
+    font-size:56px;
+    font-weight: 700;
+}
+
+#core-features .feature-card:hover{
+    box-shadow: 3px 3px 9px 0px #d3c7c7;
+}

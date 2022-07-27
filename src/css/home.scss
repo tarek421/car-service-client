@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+//Header Top
+#header-top{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    h6{
+        display: inline;
+        margin: 0 20px
+    }
+}
+
+//Header Section
+#header {
+    background: url(../image/header-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 100vh;
+    color: #fff;
+    position: relative;
+    .image {
+      position: absolute;
+      left: 50%;
+      top: 80%;
+      transform: translate(-50%, -20%);
+      img {
+        width: 600px;
+      }
+    }
+    hr {
+      margin: 0;
+      padding: 0;
+    }
+    .header-content {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-45%, -50%);
+      h1 {
+        margin: 17px 0px 40px 0;
+        font-size: 44px;
+        font-weight: 700;
+      }
+      h6 {
+        color: red;
+        font-size: 16px;
+        letter-spacing: -0.5px;
+      }
+      .btn {
+        color: white;
+        border-radius: 0;
+        padding: 10px 30px;
+        font-weight: 700;
+      }
+      .first {
+        background: #de1515e6;
+        border: 3px solid #de1515e6;
+      }
+      .second {
+        background: transparent;
+        border: 3px solid #fff;
+        margin-left: 10px;
+      }
+    }
+  
+    @media screen and (min-width: 375px) {
+      .header-content {
+        position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-22%, -50%);
+      }
+      .header-content h1 {
+        font-size: 30px;
+      }
+      .header-content .btn {
+        padding: 10px 16px;
+    }
+      .image img {
+        width: 375px;
+    }
+    }
+  
+  
+    @media screen and (min-width: 576px) {
+      .header-content {
+        position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      }
+      .header-content h1 {
+        font-size: 40px;
+      }
+      .header-content .btn {
+        padding: 10px 30px;
+    }
+      .image img {
+        width: 575px;
+    }
+    }
+  
+    @media screen and (min-width: 1400px) {
+      .header-content h1 {
+        font-size: 60px;
+      }
+      .header-content .btn {
+        padding: 15px 40px;
+    }
+      .image img {
+        width: 775px;
+    }
+    }
+  
+  }
+
+
+
+//Safety Section
+#safety{
+    background: #ddd;
+    // padding: 100px 0;
+    .section-title{
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        line-height: 1;
+        font-family: 'Rajdhani', sans-serif;
+    }
+    .section-sub-title{
+        font-family: 'Rajdhani', sans-serif;
+        color: red;
+        font-weight: 700;
+    }
+    .section-title-2{
+        padding-left: 30px;
+        border-left: 4px solid red;
+        max-width: 450px;
+    }
+    .safety-img-1{
+        img{
+            width: 65%;
+        }
+    }
+    .safety-img-2{
+        text-align: right;
+        margin-top: -15%;
+        img{
+            border: 15px solid white;
+            width: 65%;
+        }
+    }
+    
+}

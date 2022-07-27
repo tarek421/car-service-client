@@ -1,0 +1,47 @@
+#best-deal .card .product-hover{
+    position: absolute;
+    top: 68%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+#best-deal .card:hover .product-hover{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+#best-deal .card .product-hover ul li{
+    padding: 10px 13px;
+    background: #fff;
+    border: 1px solid #33333357;
+    transition: all 0.5s;
+}
+
+#best-deal .card .product-hover ul li a{
+    color: #333;
+}
+
+
+
+#best-deal .card .product-hover ul li:hover{
+    background: red;
+}
+
+#best-deal .card .product-hover ul li:hover a{
+    color: #fff;
+}
+
+#best-deal .card .product-hover li{
+    cursor: pointer;
+}

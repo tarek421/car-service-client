@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
+#header-top {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+#header-top h6 {
+  display: inline;
+  margin: 0 20px;
+}
+
+#header {
+  background: url(../image/header-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  height: 100vh;
+  color: #fff;
+  position: relative;
+}
+#header .image {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -20%);
+}
+#header .image img {
+  width: 600px;
+}
+#header hr {
+  margin: 0;
+  padding: 0;
+}
+#header .header-content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-45%, -50%);
+}
+#header .header-content h1 {
+  margin: 17px 0px 40px 0;
+  font-size: 44px;
+  font-weight: 700;
+}
+#header .header-content h6 {
+  color: red;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+}
+#header .header-content .btn {
+  color: white;
+  border-radius: 0;
+  padding: 10px 30px;
+  font-weight: 700;
+}
+#header .header-content .first {
+  background: rgba(222, 21, 21, 0.9019607843);
+  border: 3px solid rgba(222, 21, 21, 0.9019607843);
+}
+#header .header-content .second {
+  background: transparent;
+  border: 3px solid #fff;
+  margin-left: 10px;
+}
+@media screen and (min-width: 375px) {
+  #header .header-content {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-22%, -50%);
+  }
+  #header .header-content h1 {
+    font-size: 30px;
+  }
+  #header .header-content .btn {
+    padding: 10px 16px;
+  }
+  #header .image img {
+    width: 375px;
+  }
+}
+@media screen and (min-width: 576px) {
+  #header .header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #header .header-content h1 {
+    font-size: 40px;
+  }
+  #header .header-content .btn {
+    padding: 10px 30px;
+  }
+  #header .image img {
+    width: 575px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #header .header-content h1 {
+    font-size: 60px;
+  }
+  #header .header-content .btn {
+    padding: 15px 40px;
+  }
+  #header .image img {
+    width: 775px;
+  }
+}
+
+#safety {
+  background: #ddd;
+}
+#safety .section-title {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1;
+  font-family: "Rajdhani", sans-serif;
+}
+#safety .section-sub-title {
+  font-family: "Rajdhani", sans-serif;
+  color: red;
+  font-weight: 700;
+}
+#safety .section-title-2 {
+  padding-left: 30px;
+  border-left: 4px solid red;
+  max-width: 450px;
+}
+#safety .safety-img-1 img {
+  width: 65%;
+}
+#safety .safety-img-2 {
+  text-align: right;
+  margin-top: -15%;
+}
+#safety .safety-img-2 img {
+  border: 15px solid white;
+  width: 65%;
+}/*# sourceMappingURL=home.css.map */
