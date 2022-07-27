@@ -4,7 +4,7 @@ import CarBestDeal from '../CarBestDeal/CarBestDeal';
 import Services from '../Services/Services';
 import Header from '../Header/Header';
 import NewsFeeds from '../NewsFeeds/NewsFeeds';
-// import Safety from '../Safety/Safety';
+import Safety from '../Safety/Safety';
 
 
 
@@ -14,7 +14,7 @@ const Home = () => {
       <div>
          <Header />
          <Services/>
-         {/* <Safety /> */}
+         <Safety />
          <CarBestDeal/>
          <NewsFeeds/>
          <Footer/>
