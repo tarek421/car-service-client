@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
-import CarBestDeal from '../CarBestDeal/CarBestDeal';
+import Products from '../Products/Products';
 import Services from '../Services/Services';
 import Header from '../Header/Header';
 import NewsFeeds from '../NewsFeeds/NewsFeeds';
@@ -15,7 +15,7 @@ const Home = () => {
          <Header />
          <Services/>
          <Safety />
-         <CarBestDeal/>
+         <Products/>
          <NewsFeeds/>
          <Footer/>
       </div>

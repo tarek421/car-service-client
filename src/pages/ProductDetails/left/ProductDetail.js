@@ -1,4 +1,4 @@
-import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@mui/material';
 import React, { useState } from 'react';
@@ -17,7 +17,6 @@ const ProductDetail = ({ id }) => {
             .then(res => res.json())
             .then(data => setProducts(data[0]))
     }, [id])
-
 
     const handleClick = () => {
         if (quantity > 1) {
@@ -63,7 +62,7 @@ const ProductDetail = ({ id }) => {
 
                                             <button onClick={() => setQuantity(quantity + 1)} className="btn border-dark px-4 py-1">+</button>
                                         </div>
-                                        <button className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faCartPlus} /> Add to Cart</button>
+                                        <button className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</button>
 
 
 

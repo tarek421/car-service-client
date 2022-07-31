@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import Product from './Product';
 // import CircularProgress from '@material-ui/core/CircularProgress';
-import BestDeal from './BestDeal';
 
 
-const CarBestDeal = () => {
+const Products = () => {
 
    const [products, setProducts] = useState([]);
 
@@ -26,7 +26,7 @@ const CarBestDeal = () => {
                 <h1>Our Products</h1>
                 <div className="row">
                     {
-                       products.length?products.slice(0,4).map(product => <BestDeal product={product} key={product.id}></BestDeal>) : <ThreeCircles color="red" outerCircleColor="green" />
+                       products.length?products.slice(0,4).map(product => <Product product={product} key={product.id} />) : <ThreeCircles color="red" outerCircleColor="green" />
                     }
                     <button onClick={handleClick} style={{width:'150px', margin:'auto'}} className="btn btn-secondary mt-5">All Product</button>
                 </div> 
@@ -37,4 +37,4 @@ const CarBestDeal = () => {
     );
 };
 
-export default CarBestDeal;
+export default Products;

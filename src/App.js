@@ -13,7 +13,6 @@ import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import MakeAdmin from './pages/Dashboard/MakeAdmin/MakeAdmin';
 import Orders from './pages/Dashboard/Orders/Orders';
 import AdminRoute from './pages/Dashboard/AdminRoute/AdminRoute';
-import AddRivews from './pages/Dashboard/AddRivews/AddRivews';
 import Shops from './pages/Shop/Shops/Shops';
 import NotFound from './pages/NotFound/NotFound';
 import ProdructDetails from './pages/ProductDetails/ProdructDetails';
@@ -78,8 +77,6 @@ function App() {
 
               <Route path="productList" element={<ProductList />} />
               <Route path="userList" element={<UserList />} />
-
-              <Route path="addRivew" element={<AddRivews />} />
 
               <Route path="orders" element={<AdminRoute>
                 <Orders />

@@ -1,11 +1,12 @@
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+// import { faBagShopping, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@mui/material';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 
-const BestDealViewModal = (props) => {
-    const { title, image, rating, price, } = props.product;
+const ProductModal = (props) => {
+    const { title, photoUrl, rating, price, } = props.product;
     const [quantity, setQuantity] = useState(1);
     const handleClick = () => {
         if (quantity > 1) {
@@ -24,7 +25,7 @@ const BestDealViewModal = (props) => {
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
                         <div className="py-4">
-                            <img src={image} alt="" />
+                            <img src={photoUrl} alt="" />
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12">
@@ -46,7 +47,7 @@ const BestDealViewModal = (props) => {
 
                                     <button onClick={() => setQuantity(quantity + 1)} className="btn border-dark px-4 py-1">+</button>
                                 </div>
-                                <button className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faCartPlus} /> Add to Cart</button>
+                                <button onClick={handleClick} className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -57,4 +58,4 @@ const BestDealViewModal = (props) => {
     );
 };
 
-export default BestDealViewModal;
+export default ProductModal;

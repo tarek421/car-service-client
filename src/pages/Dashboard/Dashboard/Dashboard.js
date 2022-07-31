@@ -10,9 +10,6 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Dashboard = () => {
     const { user } = useAuth();
-    console.log(user.email)
-
-
     return (
         <div className='d-flex dashboard'>
             <div className="d-flex flex-column side-bar flex-shrink-0 p-3 text-white bg-dark">
@@ -78,13 +75,6 @@ const Dashboard = () => {
                             <span className="ms-2">Make Admin</span>
                         </NavLink>
                     </li> : ""}
-
-                    <li>
-                        <NavLink to="addRivew" className={(navInfo) => navInfo.isActive ? classes.active : "nav-link text-white"}>
-                            <FontAwesomeIcon className='text-danger' icon={faSquarePlus} />
-                            <span className="ms-2">Add Rivew</span>
-                        </NavLink>
-                    </li>
 
                 </ul>
           

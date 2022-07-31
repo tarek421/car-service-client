@@ -1,19 +1,17 @@
-import { Rating } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import React, { useState } from 'react';
-import './BestDeal.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faEye } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import BestDealViewModal from './BestDealViewModal';
+import './BestDeal.css';
+import { Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
+import ProductModal from './ProductModal';
 
-const BestDeal = ({ product }) => {
+const Product = ({ product }) => {
     const [modalShow, setModalShow] = useState(false);
     const { title, photoUrl, rating, price, id } = product;
 
-    const productFavourite = JSON.parse(localStorage.getItem("products"))
-            console.log(productFavourite);
+    // const productFavourite = JSON.parse(localStorage.getItem("products"))
 
     const addToFavourites = (id) => {
         const productId = localStorage.getItem("products");
@@ -65,7 +63,7 @@ const BestDeal = ({ product }) => {
                     <h4 className='text-danger'>${price}</h4>
                 </div>
             </div>
-            <BestDealViewModal
+            <ProductModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 product={product}
@@ -74,4 +72,4 @@ const BestDeal = ({ product }) => {
     );
 };
 
-export default BestDeal;
+export default Product;

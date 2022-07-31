@@ -11,39 +11,48 @@ const MakeAdmin = () => {
   const [lodding, setLodding] = useState(false);
   const { token, user } = useAuth();
 
-  useEffect(()=>{
-    const url = `https://car-services.herokuapp.com/`;
-  fetch(url)
+  useEffect(() => {
+    const url = `https://car-services.herokuapp.com/users`;
+    fetch(url)
       .then(res => res.json())
       .then(data => setUsers(data))
-  },[])
+  }, [])
 
   const { register, handleSubmit } = useForm();
   const onSubmit = data => {
     setLodding(true)
-    
-    const userss= {
-      requesterEmail: user.email,
+
+    const userss = {
       email: data.email,
       role: data.role
     }
-const filterUser = users.filter(u => u.email === user.email);
-    if(filterUser[0]?.role === "administer"){
-      fetch("https://car-services.herokuapp.com/admin", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        "authorization": `Bearer ${token}`,
-      },
-      body: JSON.stringify(userss),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setLodding(false)
-        setSuccess(true);
-        console.log(data);
-      });
-    }else{
+    const filterUser = users.filter(u => u.email === user.email);
+    if (filterUser[0]?.role === "administer") {
+      const requestedEmail = users.find(user => user.email === data.email);
+      if (requestedEmail?.email) {
+        fetch("https://car-services.herokuapp.com/admin", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            "authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify(userss),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setLodding(false)
+            setSuccess(true);
+          });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'change admin role before register the user!',
+        })
+        setLodding(false);
+      }
+
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -62,7 +71,7 @@ const filterUser = users.filter(u => u.email === user.email);
       }
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
-         {...register("email")}
+          {...register("email")}
           type="email"
           label="Email"
           variant="outlined"
@@ -70,7 +79,7 @@ const filterUser = users.filter(u => u.email === user.email);
         />
 
         <select name="role" id="role" required {...register("role")}>
-          <option value="visitor">Role</option>
+          <option value="">Role</option>
           <option value="administer">Administer</option>
           <option value="admin">Admin</option>
           <option value="visitor">Visitior</option>
