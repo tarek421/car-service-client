@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const NewsFeeds = ({id}) => {
     const [news, setNews] = useState([]);
-    console.log(news);
     useEffect(()=>{
         const url = `https://car-services.herokuapp.com/blogs`;
         fetch(url)
@@ -20,7 +19,7 @@ const NewsFeeds = ({id}) => {
                 <h1>News Feeds.</h1>
                 <div className="row">
                     {
-                        news.map(item => {return <div className="col-sm-12 col-md-6 col-lg-4">
+                        news.map(item => {return <div key={item.id} className="col-sm-12 col-md-6 col-lg-4">
                         <div className="card">
                             <img src={item.coverImage} alt="" />
                             <div className="card-body">

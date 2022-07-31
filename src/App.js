@@ -1,19 +1,16 @@
+import { createContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SkeletonTheme } from 'react-loading-skeleton'
-import Home from './pages/Home/Home/Home';
-import Login from './pages/Login/Login/Login';
+import 'react-loading-skeleton/dist/skeleton.css'
 import AuthProvider from './Contexts/AuthProvider/AuthProvider';
+import {Routes, Route} from "react-router-dom";
 import './main.css';
 import './App.css';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
+import Home from './pages/Home/Home/Home';
+import Login from './pages/Login/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import MakeAdmin from './pages/Dashboard/MakeAdmin/MakeAdmin';
-import { createContext, useState } from 'react';
-import MyOrder from './pages/Dashboard/MyOrder/MyOrder';
 import Orders from './pages/Dashboard/Orders/Orders';
 import AdminRoute from './pages/Dashboard/AdminRoute/AdminRoute';
 import AddRivews from './pages/Dashboard/AddRivews/AddRivews';
@@ -32,6 +29,7 @@ import AddBlog from './pages/Dashboard/AddBlog/AddBlog';
 
 export const userContext = createContext();
 
+
 function App() {
 
 
@@ -41,7 +39,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+      <SkeletonTheme baseColor="#eae1e1" highlightColor="#fff">
         <userContext.Provider value={[adult, children, setAdult, setChildren]}>
           <Toaster />
           <Routes>
@@ -78,7 +76,6 @@ function App() {
               <Route path="addService" element={<AddService />} />
 
 
-              <Route path="myOrder" element={<MyOrder />} />
               <Route path="productList" element={<ProductList />} />
               <Route path="userList" element={<UserList />} />
 

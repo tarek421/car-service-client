@@ -4,6 +4,7 @@ import { Rating } from '@mui/material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
+import Skeleton from 'react-loading-skeleton';
 import RelatedProduct from '../right/RelatedProduct';
 import Reviews from './Reviews';
 
@@ -40,7 +41,7 @@ const ProductDetail = ({ id }) => {
                         <div className="row">
                             <div className="col-md-6 col-sm-12">
                                 <div className="py-4">
-                                    <img className="bg-gray" src={products?.photoUrl} alt="images" />
+                                    {products?.photoUrl ? <img className="bg-gray" src={products?.photoUrl} alt="images" /> : <Skeleton height={300} />}
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12">
@@ -48,11 +49,11 @@ const ProductDetail = ({ id }) => {
                                     <Rating className='m-auto' name="read-only" value='5' readOnly />
                                     <br />
                                     <Modal.Title id="contained-modal-title-vcenter">
-                                        {products?.title}
+                                        {products?.title || <Skeleton />}
                                     </Modal.Title>
-                                    <h1 className="text-start text-danger m-0">{products?.price} <del style={{ fontWeight: '500', fontSize: '35px', marginLeft: '20px' }}>{products?.price}</del></h1>
+                                    <h1 className="text-start text-danger m-0">{products?.price || <Skeleton />} <del style={{ fontWeight: '500', fontSize: '35px', marginLeft: '20px' }}>{products?.price || <Skeleton />}</del></h1>
                                     <hr />
-                                    <h6>Categories: {products?.catagory}</h6>
+                                    <h6>Categories: {products?.catagory || <Skeleton />}</h6>
                                     <hr />
                                     <div className="d-flex justify-content-around">
                                         <div className="d-flex align-items-center">

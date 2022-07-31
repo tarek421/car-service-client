@@ -318,4 +318,19 @@
   text-align: center;
   transition: all 0.3s ease 0s;
   float: right;
+}
+
+#users table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#users table tr:nth-child(even) {
+  background-color: #f5eeee;
+  border: 1px solid red;
+}
+#users table td, #users table th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
 }/*# sourceMappingURL=main.css.map */

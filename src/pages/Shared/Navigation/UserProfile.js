@@ -61,7 +61,7 @@ const UserProfile = () => {
                     <Typography textAlign="center">Profile</Typography>
                   </MenuItem>
                   <MenuItem>
-                  <Typography as={Link} to="/dashboard/myOrder" tabIndex="-1">Dashboard</Typography>
+                  <Typography as={Link} to="/dashboard/orders" tabIndex="-1">Dashboard</Typography>
                   </MenuItem>
                   <MenuItem onClick={handleLogOut}>
                     <Typography textAlign="center">Logout</Typography>

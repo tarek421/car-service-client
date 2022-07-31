@@ -1,6 +1,18 @@
-#makeAdmin{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#makeAdmin {
+  position: absolute;
+  top: 250px;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+#role {
+  height: 55px;
+  background: gray;
+  color: white;
+}
+
+#makeAdmin .submit-button {
+  height: 55px;
+  color: white;
+  background: rebeccapurple;
 }

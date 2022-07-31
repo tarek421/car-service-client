@@ -10,6 +10,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Dashboard = () => {
     const { user } = useAuth();
+    console.log(user.email)
 
 
     return (
@@ -19,13 +20,6 @@ const Dashboard = () => {
 
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
-
-                    <li>
-                        <NavLink to="myOrder" className={(navInfo) => navInfo.isActive ? classes.active : "nav-link text-white"}>
-                            <FontAwesomeIcon className='text-danger' icon={faFirstOrderAlt} />
-                            <span className="ms-2">My Orders</span>
-                        </NavLink>
-                    </li>
 
 
                     {user?.email?<li>

@@ -20,20 +20,14 @@ const useFirebase = () => {
 
     const RegisterUser = (email, password, name) => {
         const loading = "Please Wait...";
-        setIsLoading(true)
-        toast.loading(loading)
+        setIsLoading(true);
+        toast.loading(loading);
         createUserWithEmailAndPassword(auth, email, password, name)
-            .then((userCredential) => {
-                const user = userCredential.user;
+            .then((result) => {
+                const user = result.user;
                 setUser(user);
-                // console.log(user.displayName)
-                const localstorageUser = {
-                    name: user.displayName,
-                    email: user.email
-                };
                 saveToDatabase(email, name, null, "POST");
                 UpdateUserName(name);
-                localStorage.setItem('user', JSON.stringify(localstorageUser));
                 navigate('/');
                 toast.dismiss();
                 toast.success("Register Successfully")
@@ -126,16 +120,16 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     };
 
-    const saveToDatabase = (email, displayName, photo, method) => {
-        const user = { email, displayName, photo };
-        const url = `http://localhost:4000/users/`
+    const saveToDatabase = (email, name, photo, method) => {
+        const user = { email, name, photo };
+        const url = `https://car-services.herokuapp.com/users/`
         fetch(url, {
             method: method,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         })
-
     }
+
 
 
     return {

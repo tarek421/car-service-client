@@ -1,28 +1,41 @@
-import { Alert, Button, CircularProgress, TextField } from "@mui/material";
-import React, { useState } from "react";
+import { Alert, CircularProgress, TextField } from "@mui/material";
+import Swal from 'sweetalert2';
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
-  const [email, setEmail] = useState("");
+  const [users, setUsers] = useState([]);
   const [success, setSuccess] = useState(false);
-  const { token } = useAuth();
   const [lodding, setLodding] = useState(false);
+  const { token, user } = useAuth();
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleSubmit = (e) => {
+  useEffect(()=>{
+    const url = `https://car-services.herokuapp.com/`;
+  fetch(url)
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  },[])
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
     setLodding(true)
-    e.preventDefault();
-    const user = { email };
-    fetch("https://quiet-citadel-61809.herokuapp.com/users/admin", {
+    
+    const userss= {
+      requesterEmail: user.email,
+      email: data.email,
+      role: data.role
+    }
+const filterUser = users.filter(u => u.email === user.email);
+    if(filterUser[0]?.role === "administer"){
+      fetch("https://car-services.herokuapp.com/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
         "authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(userss),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -30,24 +43,41 @@ const MakeAdmin = () => {
         setSuccess(true);
         console.log(data);
       });
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Only Administer can change admin role!',
+      })
+      setLodding(false)
+    }
   };
+
+
   return (
     <div id="makeAdmin">
       <h2 className="text-center mb-5">Make an Admin</h2>
-      {   
+      {
         lodding && <CircularProgress />
       }
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
+         {...register("email")}
           type="email"
           label="Email"
           variant="outlined"
-          onBlur={handleChange}
           required
         />
-        <Button type="submit" sx={{ height: "55px" }} variant="contained">
+
+        <select name="role" id="role" required {...register("role")}>
+          <option value="visitor">Role</option>
+          <option value="administer">Administer</option>
+          <option value="admin">Admin</option>
+          <option value="visitor">Visitior</option>
+        </select>
+        <button type="submit" className="submit-button">
           Make Admin
-        </Button>
+        </button>
         {success && (
           <Alert
             sx={{
