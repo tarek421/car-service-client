@@ -9,7 +9,6 @@ const CheckOutContent = () => {
 
     const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
     const [paid, setPaid] = useState(null);
-    console.log(paid);
     const markAsPaid = (paymentInfo) => {
         setPaid(paymentInfo)
     }

@@ -6,14 +6,16 @@ import {
 } from '@stripe/react-stripe-js';
 
 
-const Payment = (props) => {
+const Payment = ({markAsPaid}) => {
   const [paymentSuccess, setPaymentSuccess] = useState(null);
   const [paymentError, setPaymentError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
+  
   useEffect(() => {
-    props.markAsPaid(paymentSuccess);
-  } , [paymentSuccess])
+    markAsPaid(paymentSuccess);
+  })
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -34,7 +36,7 @@ const Payment = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
-      <button  className="btn btn-danger px-3 my-3" type="submit" disabled={!stripe}>
+      <button className="btn btn-danger px-3 my-3" type="submit" disabled={!stripe}>
         Pay
       </button>
       {paymentError && <p style={{color:"red"}}>Failed, {paymentError.message}</p>}
