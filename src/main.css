@@ -333,4 +333,10 @@
   border: 1px solid #ddd;
   text-align: left;
   padding: 8px;
+}
+
+#checkOut input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px;
 }/*# sourceMappingURL=main.css.map */

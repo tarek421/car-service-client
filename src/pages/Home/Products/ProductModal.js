@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@mui/material';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ProductModal = (props) => {
-    const { title, photoUrl, rating, price, } = props.product;
+    const {id, title, photoUrl, rating, price, } = props.product;
     const [quantity, setQuantity] = useState(1);
     const handleClick = () => {
         if (quantity > 1) {
@@ -47,7 +48,7 @@ const ProductModal = (props) => {
 
                                     <button onClick={() => setQuantity(quantity + 1)} className="btn border-dark px-4 py-1">+</button>
                                 </div>
-                                <button onClick={handleClick} className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</button>
+                                <button as={Link} to={`/checkOut/${id}`} className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</button>
                             </div>
                         </div>
                     </div>

@@ -25,6 +25,7 @@ import NewsDetails from './pages/NewsDetails/NewsDetails/NewsDetails';
 import UserList from './pages/Dashboard/UserList/UserList';
 import About from './pages/About/About';
 import AddBlog from './pages/Dashboard/AddBlog/AddBlog';
+import CheckOut from './pages/CheckOut/CheckOut';
 
 export const userContext = createContext();
 
@@ -43,6 +44,7 @@ function App() {
           <Toaster />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/checkOut" element={<CheckOut />} />
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shops />} />
             <Route path="/contact" element={<Contact />} />

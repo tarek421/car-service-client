@@ -1,9 +1,14 @@
 import React from 'react';
+import Banner from '../Shared/Banner/Banner';
+import Footer from '../Shared/Footer/Footer';
+import CheckOutContent from './CheckOutContent';
 
 const CheckOut = () => {
     return (
         <div>
-            <h2>This is Check Out page</h2>
+            <Banner title="CheckOut" />
+            <CheckOutContent />
+            <Footer />
         </div>
     );
 };
