@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import AuthProvider from './Contexts/AuthProvider/AuthProvider';
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import './main.css';
 import './App.css';
 import { Toaster } from 'react-hot-toast';
@@ -79,6 +79,8 @@ function App() {
 
               <Route path="productList" element={<ProductList />} />
               <Route path="userList" element={<UserList />} />
+
+              {/* <Route path="orders" element={<Orders />} /> */}
 
               <Route path="orders" element={<AdminRoute>
                 <Orders />

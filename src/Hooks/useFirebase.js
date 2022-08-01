@@ -106,9 +106,11 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://quiet-citadel-61809.herokuapp.com/user/${user.email}`)
+        fetch(`https://car-services.herokuapp.com/admin/${user.email}`)
             .then((res) => res.json())
-            .then((data) => setAdmin(data.admin));
+            .then((data) => {
+                setAdmin(data.admin);
+            });
     }, [user.email]);
 
 
