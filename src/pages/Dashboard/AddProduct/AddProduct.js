@@ -9,13 +9,11 @@ import { useNavigate } from 'react-router-dom';
 const AddProduct = () => {
 
     const [imageUrl, setImageUrl] = useState("");
-    // const [imageUrl2, setImageUrl2] = useState("");
 
     const navigate = useNavigate()
 
 
 
-    // console.log(imageUrl1, imageUrl2);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 

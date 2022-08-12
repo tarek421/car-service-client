@@ -1,56 +1,109 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
-const CheckOutContent = () => {
+const CheckOutContent = ({ id }) => {
 
-    const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    const [data, setData] = useState([]);
+    const [product, setProduct] = useState({});
+    const { title, price } = product;
+    const user = useAuth();
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const vat = (price / 100) * 15;
+    const delivaryFee = 20.00;
+    const total = price + vat + delivaryFee;
+
+
+    const handleClick = () => {
+        const order = {
+            title,
+            price,
+            name: data.name || user.user.displayName,
+            email: data.email || user.user.email,
+            address: data.addres,
+            phone: data.phone
+        }
+        const url = `https://car-services.herokuapp.com/orders`;
+        const loading = "Please Wait...";
+        toast.loading(loading);
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify(order),
+        })
+            .then(res => res.json())
+            .then(result => {
+                    toast.dismiss();
+                    toast.success(result.message);
+                    navigate(`/productDetails/${id}`);
+            })
+    }
+
+
+    useEffect(() => {
+        const url = `https://car-services.herokuapp.com/products/${id}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setProduct(data[0]))
+    }, [id])
+
+
+    const stripePromise = loadStripe('pk_test_qblFNYngBkEdjEZ16jxxoWSM');
     const [paid, setPaid] = useState(null);
     const markAsPaid = (paymentInfo) => {
         setPaid(paymentInfo)
     }
 
-    const handleOrder = () => {
-        console.log('Order compleated')
-    }
 
     return (
         <div id="checkOut" className="my-5">
             <div className="container">
                 <h2>Billing Details</h2>
                 <div className="p-5 border">
-                    <form>
+                    <form >
                         <h6>Personal Information</h6>
                         <div className="row mt-3">
                             <div className="col-sm-12 col-md-6">
                                 <label htmlFor="name">Name</label>
-                                <input placeholder="Enter your name" type="text" name="" id="" />
+                                <input onChange={handleChange} defaultValue={user.user.displayName} placeholder="Enter your name" type="text" name="name" id="" />
                             </div>
                             <div className="col-sm-12 col-md-6">
                                 <label htmlFor="name">Email</label>
-                                <input placeholder="Enter your Email" type="text" name="" id="" />
+                                <input onChange={handleChange} defaultValue={user.user.email} placeholder="Enter your Email" type="text" name="email" id="" />
                             </div>
                             <div className="col-sm-12 col-md-6">
                                 <label htmlFor="name">Phone</label>
-                                <input placeholder="Enter your phone" type="text" name="" id="" />
+                                <input onChange={handleChange} placeholder="Enter your phone" type="text" name="phone" id="" />
                             </div>
                             <div className="col-sm-12 col-md-6">
                                 <label htmlFor="name">Address</label>
-                                <input placeholder="Enter your address" type="text" name="" id="" />
+                                <input onChange={handleChange} placeholder="Enter your address" type="text" name="address" id="" />
                             </div>
                         </div>
-
                     </form>
+
+
                 </div>
 
                 <div className="payment p-5">
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
-
-
 
                             <div className="p-5">
                                 <Elements stripe={stripePromise}>
@@ -58,37 +111,33 @@ const CheckOutContent = () => {
                                 </Elements>
                             </div>
 
-
-
                         </div>
                         <div className="col-sm-12 col-md-6">
                             <h3>Total cost</h3>
                             <ul>
                                 <li className="d-flex justify-content-between">
-                                    <p>Cart Totals Brake Conversion Kit × 2</p>
-                                    <p>$298.00</p>
+                                    <p>{title}</p>
+                                    <p>${price}.00</p>
                                 </li>
 
                                 <li className="d-flex justify-content-between">
-                                    <p>OE Replica Wheels × 2</p>
-                                    <p>$170.00</p>
+                                    <p>Vat</p>
+                                    <p>${vat}</p>
                                 </li>
 
                                 <li className="d-flex justify-content-between">
-                                    <p>Wheel Bearing Retainer × 2</p>
-                                    <p>$150.00</p>
+                                    <p>Delivary fee</p>
+                                    <p>${delivaryFee}</p>
                                 </li>
 
                                 <li className="d-flex justify-content-between">
                                     <p>Total</p>
-                                    <p>$150.00</p>
+                                    <p>${total}</p>
                                 </li>
                             </ul>
                             {
                                 paid ?
-                                    <Link to="/order-complete">
-                                        <button onClick={() => handleOrder()} className="btn btn-block btn-danger btn-secondary">Check Out Your Food</button>
-                                    </Link>
+                                    <button onClick={() => handleClick()} type="submit" className="btn btn-block btn-danger btn-secondary">Check Out Your Food</button>
                                     :
                                     <button disabled className="btn btn-block btn-secondary">Check Out Your Food</button>
                             }

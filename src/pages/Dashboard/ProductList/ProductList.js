@@ -1,13 +1,19 @@
 import { Rating } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 const ProductList = () => {
     const [allProducts, setAllProducts] = useState([]);
 
-    fetch(`https://car-services.herokuapp.com/products/`)
+    useEffect(()=>{
+        fetch(`https://car-services.herokuapp.com/products/`)
         .then((res) => res.json())
         .then((data) => setAllProducts(data))
+    },[allProducts.length])
+
+        const handleDelete = () =>{
+            alert("Product Deleted")
+        }
 
     return (
         <div id='Product-list'>
@@ -20,7 +26,7 @@ const ProductList = () => {
                         <th style={{ width: '20%' }}>Action</th>
                     </tr>
                     {
-                        allProducts.map((product) => <tr>
+                        allProducts.map((product) => <tr key={product.id}> 
                             <td><img src={product.photoUrl} alt="" /></td>
                             <td>
                                 <h2>Title: {product.title}</h2>
@@ -29,7 +35,7 @@ const ProductList = () => {
                                 <p><Rating name="read-only" value={product.rating} readOnly /></p>
                             </td>
                             <td>
-                                <button className="btn btn-primary">Delete</button>
+                                <button onClick={handleDelete} className="btn btn-primary">Delete</button>
                                 <button className="btn btn-primary ms-3">Update</button>
                             </td>
                         </tr>)

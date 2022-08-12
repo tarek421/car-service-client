@@ -22,7 +22,6 @@ const Payment = ({markAsPaid}) => {
       type: 'card',
       card: elements.getElement(CardElement),
     });
-    console.log(error, paymentMethod);
     if(error){
       setPaymentError(error);
       setPaymentSuccess(null);

@@ -59,9 +59,7 @@ const AddBlog = () => {
                         background: "#333",
                         color: "#fff",
                     },
-                });
-                // navigate('/');
-                
+                });                
             })
     };
 

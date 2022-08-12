@@ -27,23 +27,6 @@ const Product = ({ product }) => {
 
 
 
-    // const addToFavourites = (id) => {
-
-    //     var names = [];
-    //     names.push({
-    //         id: id,
-    //         email: 'tarek mahmud'
-    //     });
-    //     localStorage.setItem("names", JSON.stringify(names));
-    //     console.log(names);
-
-    // };
-
-
-
-
-
-
     return (
         <div className='col-sm-12 col-md-6 mt-3 col-lg-3 text-center'>
             <div className="card">

@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
+import { Link } from 'react-router-dom';
 import RelatedProduct from '../right/RelatedProduct';
 import Reviews from './Reviews';
 
@@ -24,14 +25,6 @@ const ProductDetail = ({ id }) => {
         }
     }
 
-    // const handleFavourite = (id) => {
-    //     favouriteItem.push(id)
-    //     localStorage.setItem("item" , JSON.stringify(favouriteItem));
-    // }
-
-
-
-
     return (
         <div id='product-detail' className='py-5'>
             <div className="container">
@@ -50,7 +43,7 @@ const ProductDetail = ({ id }) => {
                                     <Modal.Title id="contained-modal-title-vcenter">
                                         {products?.title || <Skeleton />}
                                     </Modal.Title>
-                                    <h1 className="text-start text-danger m-0">{products?.price || <Skeleton />} <del style={{ fontWeight: '500', fontSize: '35px', marginLeft: '20px' }}>{products?.price || <Skeleton />}</del></h1>
+                                    <h1 className="text-start text-danger m-0">${products?.price || <Skeleton />} <del style={{ fontWeight: '500', fontSize: '35px', marginLeft: '20px' }}>${products?.price || <Skeleton />}</del></h1>
                                     <hr />
                                     <h6>Categories: {products?.catagory || <Skeleton />}</h6>
                                     <hr />
@@ -62,9 +55,7 @@ const ProductDetail = ({ id }) => {
 
                                             <button onClick={() => setQuantity(quantity + 1)} className="btn border-dark px-4 py-1">+</button>
                                         </div>
-                                        <button className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</button>
-
-
+                                        <Link to={`/checkout/${id}`} className="btn btn-danger btn-lg"><FontAwesomeIcon icon={faBagShopping} /> Buy Now</Link>
 
                                     </div>
                                     <div className="d-flex mt-3">

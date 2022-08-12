@@ -55,10 +55,12 @@ const Reviews = ({ id }) => {
             <h3>Customer Reviews</h3>
             {
                 rivews.map(rivew => {
-                    console.log(rivew)
                     return <div className="d-flex mt-5">
                     <div className="image">
-                        <img src={rivew.image} alt="" />
+                        
+                        {
+                            rivew?.image? <img src={rivew.image} alt="" /> : <img src="https://i.ibb.co/5GzXkwq/user.png" alt="" />
+                        }
                     </div>
                     <div className="content">
                         <div className="d-flex justify-content-between">
@@ -84,9 +86,9 @@ const Reviews = ({ id }) => {
                     <textarea {...register("rivew", { required: true })} name="rivew" rows="5" placeholder="Type your comment..."></textarea>
                     {errors.rivew && <span>This field is required</span>}
 
-                    <input defaultValue={user.displayName} {...register("name", { required: true })} type="text" placeholder="Type Your Name..." />
+                    <input defaultValue={user.displayName} {...register("name", { required: true })} type="text" placeholder="Type Your Name..." readonly />
 
-                    <input defaultValue={user.email} {...register("email")} type="email" placeholder="Type Your Email..." />
+                    <input readonly defaultValue={user.email} {...register("email")} type="email" placeholder="Type Your Email..." />
 
                     <button className="btn btn-secondary" type="submit">Submit</button>
                 </form>

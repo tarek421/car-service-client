@@ -44,7 +44,7 @@ function App() {
           <Toaster />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/checkOut" element={<CheckOut />} />
+            <Route path="/checkout/:id" element={<CheckOut />} />
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shops />} />
             <Route path="/contact" element={<Contact />} />

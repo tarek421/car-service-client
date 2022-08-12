@@ -19,7 +19,7 @@ const Orders = () => {
 
 
     useEffect(() => {
-        const url = `https://quiet-citadel-61809.herokuapp.com/orders`;
+        const url = `https://car-services.herokuapp.com/orders`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -52,8 +52,8 @@ const Orders = () => {
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Visitor Name</TableCell>
-                            <TableCell align="left">Destination Name</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="left">Title</TableCell>
                             <TableCell align="left">email</TableCell>
                             <TableCell align="left">phone</TableCell>
                             <TableCell align="left">Total Price</TableCell>
@@ -65,13 +65,13 @@ const Orders = () => {
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => (
                                 <TableRow
-                                    key={row._id}
+                                    key={row.id}
                                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="left">{row.destinationName}</TableCell>
+                                    <TableCell align="left">{row.title}</TableCell>
                                     <TableCell align="left">{row.email}</TableCell>
                                     <TableCell align="left">{row.phone}</TableCell>
                                     <TableCell align="left">{row.price}</TableCell>
