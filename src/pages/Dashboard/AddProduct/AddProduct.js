@@ -5,12 +5,16 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
 
 const AddProduct = () => {
 
     const [imageUrl, setImageUrl] = useState("");
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const { admin } = useAuth();
 
 
 
@@ -34,29 +38,37 @@ const AddProduct = () => {
             rating: Number(data.rating),
             description: data.description,
             photoUrl: imageUrl,
-            // photoUrl2: imageUrl2
         }
 
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(product),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.dismiss(loading);
-                toast.success("Successfully Added Product", data, {
-                    style: {
-                        borderRadius: "10px",
-                        background: "#333",
-                        color: "#fff",
-                    },
-                });
-                navigate('/');
+        if (admin) {
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(product),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
             })
-    };
+                .then(res => res.json())
+                .then(data => {
+                    toast.dismiss(loading);
+                    toast.success("Successfully Added Product", data, {
+                        style: {
+                            borderRadius: "10px",
+                            background: "#333",
+                            color: "#fff",
+                        },
+                    });
+                    navigate('/');
+                })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Only Admin can Product added!',
+            })
+            toast.dismiss(loading);
+        }
+    }
 
     const handleImage = (event) => {
         const loading = toast.loading("Please wait...", {
@@ -89,36 +101,7 @@ const AddProduct = () => {
             });
     };
 
-    // const handleImage2 = (event) => {
-    //     const loading = toast.loading("Please wait...", {
-    //         style: {
-    //             borderRadius: "10px",
-    //             background: "#333",
-    //             color: "#fff",
-    //         },
-    //     });
-    //     const image = event.target.files[0];
-    //     const imageData = new FormData();
-    //     imageData.set("key", "3076d9416252823c2788e18914d271ae");
-    //     imageData.append("image", image);
 
-    //     axios
-    //         .post("https://api.imgbb.com/1/upload", imageData)
-    //         .then(function (response) {
-    //             setImageUrl2(response.data.data.display_url);
-    //             toast.dismiss(loading);
-    //             toast.success("Successfully Image Upload", {
-    //                 style: {
-    //                     borderRadius: "10px",
-    //                     background: "#333",
-    //                     color: "#fff",
-    //                 },
-    //             });
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // };
 
 
     return (
@@ -172,7 +155,7 @@ const AddProduct = () => {
                             </div>
                             <div className="col-sm-12 col-md-6">
 
-                            <label htmlFor="UploadPhoto">Upload Photo</label>
+                                <label htmlFor="UploadPhoto">Upload Photo</label>
                                 <div className="image-upload">
                                     <label htmlFor="file-input">
                                         <img src={folderImage} alt='image_1' />

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
+    const {admin} = useAuth();
     useEffect(() => {
         const url = `https://car-services.herokuapp.com/users/`;
         fetch(url)
@@ -11,14 +14,22 @@ const UserList = () => {
 
     const handleClick = (id) => {
         const url = `https://car-services.herokuapp.com/users/${id}`;
-        fetch(url, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-        })
-        .then(res=> res.json())
-        .then(data => {
-
-        })
+        if(admin){
+            fetch(url, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+            .then(res=> res.json())
+            .then(data => {
+                console.log(data)
+            })
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Only Admin can delete user!',
+            })
+        }
     }
 
     return (

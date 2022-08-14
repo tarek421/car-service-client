@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-// import { services } from '../../Data/ServicesData';
 
 const ServiceDetailContent = () => {
     const { id } = useParams();
-    // const serviceDetail = services.filter(service => service.id === Number(id))
 
     const [allServices, setAllServices] = useState([]);
     const [service, setService] = useState([]);
@@ -49,21 +47,21 @@ const ServiceDetailContent = () => {
                     <div className="col-md-9 col-sm-12 col-lg-9">
                     <img className='' style={{ width: '100%' }} src={service[0]?.coverPhoto} alt="" />
                         <div className="content py-5">
-                            <p>{service[0]?.header}</p>
+                            <p>{service[0]?.description}</p>
                         </div>
                         <div className="row">
                             <div className="col-md-6 col-sm-12">
-                                <img className='' style={{ width: '100%' }} src={service[0]?.photoUrl1} alt="" />
+                                <img className='' style={{ width: '100%' }} src={service[0]?.image1} alt="" />
                             </div>
                             <div className="col-md-6 col-sm-12">
-                                <img className='' style={{ width: '100%' }} src={service[0]?.photoUrl2} alt="" />
+                                <img className='' style={{ width: '100%' }} src={service[0]?.image2} alt="" />
                             </div>
                         </div>
 
                         <div className="content py-5">
                             <h4 className='text-black'>{service[0]?.title}</h4>
-                            <p>{service[0]?.description1}</p>
-                            <p>{service[0]?.description2}</p>
+                            <p>{service[0]?.paragraph1}</p>
+                            <p>{service[0]?.paragraph2}</p>
                         </div>
 
                     </div>
