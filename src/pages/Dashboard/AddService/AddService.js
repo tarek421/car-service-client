@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 const AddService = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [imageUrl, setImageUrl] = useState([]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const { admin } = useAuth();
 
