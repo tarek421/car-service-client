@@ -12,7 +12,7 @@ const MakeAdmin = () => {
   const { token, user } = useAuth();
 
   useEffect(() => {
-    const url = `https://car-services.herokuapp.com/users`;
+    const url = `https://tan-glorious-skunk.cyclic.app/users`;
     fetch(url)
       .then(res => res.json())
       .then(data => setUsers(data))
@@ -30,7 +30,7 @@ const MakeAdmin = () => {
     if (filterUser[0]?.role === "administer") {
       const requestedEmail = users.find(user => user.email === data.email);
       if (requestedEmail?.email) {
-        fetch("https://car-services.herokuapp.com/admin", {
+        fetch("https://tan-glorious-skunk.cyclic.app/admin", {
           method: "PUT",
           headers: {
             "content-type": "application/json",

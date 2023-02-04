@@ -38,8 +38,8 @@ const AddService = () => {
             image1: imageUrl.image1,
             image2: imageUrl.image2
         }
-        const url = `https://car-services.herokuapp.com/services`;
-        if(admin){
+        const url = `https://tan-glorious-skunk.cyclic.app/services`;
+        if (admin) {
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -60,7 +60,7 @@ const AddService = () => {
                     });
                     // navigate('/');
                 })
-        }else{
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

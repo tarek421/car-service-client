@@ -37,7 +37,7 @@ const CheckOutContent = ({ id }) => {
             address: data.addres,
             phone: data.phone
         }
-        const url = `https://car-services.herokuapp.com/orders`;
+        const url = `https://tan-glorious-skunk.cyclic.app/orders`;
         const loading = "Please Wait...";
         toast.loading(loading);
         fetch(url, {
@@ -49,15 +49,15 @@ const CheckOutContent = ({ id }) => {
         })
             .then(res => res.json())
             .then(result => {
-                    toast.dismiss();
-                    toast.success(result.message);
-                    navigate(`/productDetails/${id}`);
+                toast.dismiss();
+                toast.success(result.message);
+                navigate(`/productDetails/${id}`);
             })
     }
 
 
     useEffect(() => {
-        const url = `https://car-services.herokuapp.com/products/${id}`;
+        const url = `https://tan-glorious-skunk.cyclic.app/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data[0]))

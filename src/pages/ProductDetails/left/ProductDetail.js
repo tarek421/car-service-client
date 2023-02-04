@@ -14,7 +14,7 @@ const ProductDetail = ({ id }) => {
     const [quantity, setQuantity] = useState(1);
     const [productDetails, setProductDetails] = useState("description");
     useEffect(() => {
-        fetch(`https://car-services.herokuapp.com/products/${id}`)
+        fetch(`https://tan-glorious-skunk.cyclic.app/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data[0]))
     }, [id])
@@ -94,10 +94,10 @@ const ProductDetail = ({ id }) => {
                         </ul>
                         {
                             productDetails === 'description' && <p>{products?.description}</p>
-                        }   
+                        }
                         {
                             productDetails === 'review' && <Reviews id={id} />
-                        } 
+                        }
                     </div>
                     <div className="col-sm-12 col-md-4"></div>
                 </div>

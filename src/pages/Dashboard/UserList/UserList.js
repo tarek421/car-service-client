@@ -4,26 +4,26 @@ import useAuth from '../../../Hooks/useAuth';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-    const {admin} = useAuth();
+    const { admin } = useAuth();
     useEffect(() => {
-        const url = `https://car-services.herokuapp.com/users/`;
+        const url = `https://tan-glorious-skunk.cyclic.app/users/`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [users])
 
     const handleClick = (id) => {
-        const url = `https://car-services.herokuapp.com/users/${id}`;
-        if(admin){
+        const url = `https://tan-glorious-skunk.cyclic.app/users/${id}`;
+        if (admin) {
             fetch(url, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             })
-            .then(res=> res.json())
-            .then(data => {
-                console.log(data)
-            })
-        }else{
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -45,13 +45,15 @@ const UserList = () => {
                     <th>Action</th>
                 </tr>
                 {
-                    users.map(user => {return <tr key={user.id}>
-                        <td>{user.id}</td>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>{user.role}</td>
-                        <td><button onClick={() => handleClick(user.id)}>delete</button></td>
-                    </tr>})
+                    users.map(user => {
+                        return <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.role}</td>
+                            <td><button onClick={() => handleClick(user.id)}>delete</button></td>
+                        </tr>
+                    })
                 }
             </table>
         </div>

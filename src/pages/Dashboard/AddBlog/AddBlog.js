@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 
 const AddBlog = () => {
 
- 
+
     let imageUrl = [];
 
 
@@ -24,7 +24,7 @@ const AddBlog = () => {
                 color: "#fff",
             },
         });
-        const url = `https://car-services.herokuapp.com/blogs`;
+        const url = `https://tan-glorious-skunk.cyclic.app/blogs`;
 
         const blog = {
             title: data.title,
@@ -59,7 +59,7 @@ const AddBlog = () => {
                         background: "#333",
                         color: "#fff",
                     },
-                });                
+                });
             })
     };
 
@@ -82,7 +82,7 @@ const AddBlog = () => {
             .then(function (response) {
                 localStorage.getItem("image");
                 imageUrl.push(response.data.data.display_url);
-                localStorage.setItem("image" , JSON.stringify(imageUrl));       
+                localStorage.setItem("image", JSON.stringify(imageUrl));
                 toast.dismiss(loading);
                 toast.success("Successfully Image Upload", {
                     style: {
@@ -212,7 +212,7 @@ const AddBlog = () => {
                         </div>
 
                         <div className="row mt-4">
-                        <div className="col-sm-12 col-md-6">
+                            <div className="col-sm-12 col-md-6">
                                 <label htmlFor="paragraph3">Paragraph-3</label>
                                 <input max="5" {...register("paragraph3", { required: true })} name="paragraph3" placeholder="Paragraph-3" />
                                 {errors.paragraph3 && <span>This field is required</span>}

@@ -8,15 +8,15 @@ import Product from './Product';
 
 const Products = () => {
 
-   const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://car-services.herokuapp.com/products`)
-        .then((data) => setProducts(data.data))
+        axios.get(`https://tan-glorious-skunk.cyclic.app/products`)
+            .then((data) => setProducts(data.data))
     }, [])
 
     const navigate = useNavigate();
-    const handleClick = () =>{
+    const handleClick = () => {
         navigate('/shop');
     }
 
@@ -26,12 +26,12 @@ const Products = () => {
                 <h1>Our Products</h1>
                 <div className="row">
                     {
-                       products.length?products.slice(0,4).map(product => <Product product={product} key={product.id} />) : <ThreeCircles color="red" outerCircleColor="green" />
+                        products.length ? products.slice(0, 4).map(product => <Product product={product} key={product.id} />) : <ThreeCircles color="red" outerCircleColor="green" />
                     }
-                    <button onClick={handleClick} style={{width:'150px', margin:'auto'}} className="btn btn-secondary mt-5">All Product</button>
-                </div> 
-                
-                
+                    <button onClick={handleClick} style={{ width: '150px', margin: 'auto' }} className="btn btn-secondary mt-5">All Product</button>
+                </div>
+
+
             </div>
         </div>
     );

@@ -19,7 +19,7 @@ const Orders = () => {
 
 
     useEffect(() => {
-        const url = `https://car-services.herokuapp.com/orders`;
+        const url = `https://tan-glorious-skunk.cyclic.app/orders`;
         fetch(url, {
             method: 'GET',
             headers: {

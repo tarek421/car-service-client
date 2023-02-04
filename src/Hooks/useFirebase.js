@@ -106,7 +106,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://car-services.herokuapp.com/admin/${user.email}`)
+        fetch(`https://tan-glorious-skunk.cyclic.app/admin/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setAdmin(data.admin);
@@ -124,7 +124,7 @@ const useFirebase = () => {
 
     const saveToDatabase = (email, name, photo, method) => {
         const user = { email, name, photo };
-        const url = `https://car-services.herokuapp.com/users/`
+        const url = `https://tan-glorious-skunk.cyclic.app/users/`
         fetch(url, {
             method: method,
             headers: { "Content-Type": "application/json" },

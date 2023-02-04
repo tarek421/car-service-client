@@ -9,8 +9,8 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://car-services.herokuapp.com/products`)
-        .then((data) => setProducts(data.data))
+        axios.get(`https://tan-glorious-skunk.cyclic.app/products`)
+            .then((data) => setProducts(data.data))
     }, [])
 
     return (

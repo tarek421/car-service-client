@@ -11,12 +11,12 @@ const Reviews = ({ id }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
-    useEffect(()=>{
-        const url = `https://car-services.herokuapp.com/rivews/${id}`;
+    useEffect(() => {
+        const url = `https://tan-glorious-skunk.cyclic.app/rivews/${id}`;
         fetch(url)
-        .then(res => res.json())
-        .then(data => setRivews(data))
-    },[id])
+            .then(res => res.json())
+            .then(data => setRivews(data))
+    }, [id])
 
 
     const onSubmit = data => {
@@ -30,7 +30,7 @@ const Reviews = ({ id }) => {
             rating: rating
         }
 
-        fetch(`https://car-services.herokuapp.com/rivews/`, {
+        fetch(`https://tan-glorious-skunk.cyclic.app/rivews/`, {
             method: 'POST',
             headers: { "content-type": "application/json" },
             body: JSON.stringify(rivew)
@@ -56,21 +56,21 @@ const Reviews = ({ id }) => {
             {
                 rivews.map(rivew => {
                     return <div className="d-flex mt-5">
-                    <div className="image">
-                        
-                        {
-                            rivew?.image? <img src={rivew.image} alt="" /> : <img src="https://i.ibb.co/5GzXkwq/user.png" alt="" />
-                        }
-                    </div>
-                    <div className="content">
-                        <div className="d-flex justify-content-between">
-                            <h5>{rivew.name}</h5>
-                            <h5>{rivew.createdOn}</h5>
+                        <div className="image">
+
+                            {
+                                rivew?.image ? <img src={rivew.image} alt="" /> : <img src="https://i.ibb.co/5GzXkwq/user.png" alt="" />
+                            }
                         </div>
-                        <h5><Rating value={rivew.rating} readOnly /></h5>
-                        <p>{rivew.rivew}</p>
+                        <div className="content">
+                            <div className="d-flex justify-content-between">
+                                <h5>{rivew.name}</h5>
+                                <h5>{rivew.createdOn}</h5>
+                            </div>
+                            <h5><Rating value={rivew.rating} readOnly /></h5>
+                            <p>{rivew.rivew}</p>
+                        </div>
                     </div>
-                </div>
                 })
             }
             <div className="add-review mt-5">

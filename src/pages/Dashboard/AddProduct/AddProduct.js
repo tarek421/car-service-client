@@ -29,7 +29,7 @@ const AddProduct = () => {
                 color: "#fff",
             },
         });
-        const url = `https://car-services.herokuapp.com/products`;
+        const url = `https://tan-glorious-skunk.cyclic.app/products`;
 
         const product = {
             title: data.title,

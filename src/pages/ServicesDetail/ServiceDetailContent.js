@@ -7,25 +7,25 @@ const ServiceDetailContent = () => {
 
     const [allServices, setAllServices] = useState([]);
     const [service, setService] = useState([]);
-        // const { title, coverPhoto, imageUrl1, imageUrl2, header,description1, description2 } = services[0];
-        
+    // const { title, coverPhoto, imageUrl1, imageUrl2, header,description1, description2 } = services[0];
+
     console.log(allServices, service)
 
     useEffect(() => {
-        const url = `https://car-services.herokuapp.com/services`
+        const url = `https://tan-glorious-skunk.cyclic.app/services`
         fetch(url)
-        .then(res => res.json())
-        .then(data => setAllServices(data))
-    },[id]);
+            .then(res => res.json())
+            .then(data => setAllServices(data))
+    }, [id]);
 
     useEffect(() => {
-        const url = `https://car-services.herokuapp.com/services/${id}`
+        const url = `https://tan-glorious-skunk.cyclic.app/services/${id}`
         fetch(url)
-        .then(res => res.json())
-        .then(data => setService(data))
-    },[id]);
+            .then(res => res.json())
+            .then(data => setService(data))
+    }, [id]);
 
-    
+
 
     return (
         <div id="service-detail" className='service-detail my-5'>
@@ -45,7 +45,7 @@ const ServiceDetailContent = () => {
                     </div>
 
                     <div className="col-md-9 col-sm-12 col-lg-9">
-                    <img className='' style={{ width: '100%' }} src={service[0]?.coverPhoto} alt="" />
+                        <img className='' style={{ width: '100%' }} src={service[0]?.coverPhoto} alt="" />
                         <div className="content py-5">
                             <p>{service[0]?.description}</p>
                         </div>
