@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { userContext } from '../../App';
 
 
 const CheckOutContent = ({ id }) => {
@@ -12,6 +13,8 @@ const CheckOutContent = ({ id }) => {
     const [data, setData] = useState([]);
     const [product, setProduct] = useState({});
     const { title, price } = product;
+    const [quantity] = useContext(userContext)
+
     const user = useAuth();
 
     const navigate = useNavigate();
@@ -23,19 +26,23 @@ const CheckOutContent = ({ id }) => {
         });
     }
 
-    const vat = (price / 100) * 15;
+    const total = price * quantity;
+
+    const vat = (total / 100) * 15;
     const delivaryFee = 20.00;
-    const total = price + vat + delivaryFee;
+    const totalPrice = total + vat + delivaryFee;
 
 
     const handleClick = () => {
         const order = {
             title,
-            price,
+            totalPrice,
             name: data.name || user.user.displayName,
             email: data.email || user.user.email,
             address: data.addres,
-            phone: data.phone
+            phone: data.phone,
+            quantity: quantity,
+            status: 'pending'
         }
         const url = `https://tan-glorious-skunk.cyclic.app/orders`;
         const loading = "Please Wait...";
@@ -132,7 +139,7 @@ const CheckOutContent = ({ id }) => {
 
                                 <li className="d-flex justify-content-between">
                                     <p>Total</p>
-                                    <p>${total}</p>
+                                    <p>${totalPrice}</p>
                                 </li>
                             </ul>
                             {

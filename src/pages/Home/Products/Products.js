@@ -10,6 +10,7 @@ const Products = () => {
 
     const [products, setProducts] = useState([]);
 
+
     useEffect(() => {
         axios.get(`https://tan-glorious-skunk.cyclic.app/products`)
             .then((data) => setProducts(data.data))

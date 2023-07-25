@@ -26,21 +26,19 @@ import UserList from './pages/Dashboard/UserList/UserList';
 import About from './pages/About/About';
 import AddBlog from './pages/Dashboard/AddBlog/AddBlog';
 import CheckOut from './pages/CheckOut/CheckOut';
+import UpdateProduct from './pages/Dashboard/AddProduct/UpdateProduct';
 
 export const userContext = createContext();
 
 
 function App() {
 
-
-  const [adult, setAdult] = useState(1);
-  const [children, setChildren] = useState(1);
-
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <AuthProvider>
       <SkeletonTheme baseColor="#eae1e1" highlightColor="#fff">
-        <userContext.Provider value={[adult, children, setAdult, setChildren]}>
+        <userContext.Provider value={[quantity, setQuantity]}>
           <Toaster />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -49,10 +47,10 @@ function App() {
             <Route path="/shop" element={<Shops />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="productDetails/:id" element={<ProdructDetails />} />
-            <Route path="servicesDetail/:id" element={<ServicesDetail />} />
-            <Route path="newsDetail/:id" element={<NewsDetails />} />
-            <Route path="newsDetail/" element={<NewsDetails />} />
+            <Route path="/productDetails/:id" element={<ProdructDetails />} />
+            <Route path="/servicesDetail/:id" element={<ServicesDetail />} />
+            <Route path="/newsDetail/:id" element={<NewsDetails />} />
+            <Route path="/blog/:id" element={<NewsDetails />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="*" exact="true" element={<NotFound />} />
@@ -64,24 +62,14 @@ function App() {
                 <MakeAdmin />
               </AdminRoute>} />
 
-              {/* <Route path="addService" element={<AdminRoute>
-              <AddService />
-            </AdminRoute>} /> */}
-
-              {/* <Route path="addProduct" element={<AdminRoute>
-              <AddProduct />
-            </AdminRoute>} /> */}
-
               <Route path="addProduct" element={<AddProduct />} />
+              <Route path="update-product/:id" element={<UpdateProduct />} />
               <Route path="addBlog" element={<AddBlog />} />
               <Route path="addService" element={<AddService />} />
 
 
               <Route path="productList" element={<ProductList />} />
               <Route path="userList" element={<UserList />} />
-
-              {/* <Route path="orders" element={<Orders />} /> */}
-
               <Route path="orders" element={<Orders />} />
 
             </Route>

@@ -1,0 +1,47 @@
+#updateProduct .product-content {
+  width: 60%;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #9e7f7f;
+}
+
+#updateProduct h6 {
+  background: rebeccapurple;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: serif;
+}
+#updateProduct .product-content {
+  background-color: #fff;
+  padding: 10px 10px;
+}
+#updateProduct input,
+#updateProduct select {
+  width: 100%;
+  padding: 5px;
+  margin-top: 3px;
+}
+#updateProduct select {
+  padding: 5px;
+}
+#updateProduct textarea {
+  width: 100%;
+}
+#updateProduct .image-upload {
+  text-align: center;
+  border: 1px dashed #9e7f7f;
+  padding: 5px 5px;
+  margin-top: 13px;
+}
+#updateProduct .image-upload img {
+  cursor: pointer;
+  width: auto;
+  height: 40px;
+}
+#updateProduct .image-upload input {
+  display: block;
+}

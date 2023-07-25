@@ -14,7 +14,7 @@ const Header = () => {
             <div className="container">
                 <div className="header-content">
                     <h6>ANY KIND OF CAR YOU WILL GET</h6>
-                    <h1>Professional Car 
+                    <h1>Professional Car
                         Service Provide</h1>
                     <div className="button-group">
                         <a href="#core-features"><button className="btn first">our service</button></a>

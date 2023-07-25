@@ -1,24 +1,61 @@
 import { Rating } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
+import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
     const [allProducts, setAllProducts] = useState([]);
+    const { admin } = useAuth();
 
     useEffect(() => {
         fetch(`https://tan-glorious-skunk.cyclic.app/products/`)
             .then((res) => res.json())
             .then((data) => setAllProducts(data))
-    }, [allProducts.length])
+    }, [allProducts])
 
-    const handleDelete = () => {
-        alert("Product Deleted")
+    const handleDelete = (id) => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const url = `https://tan-glorious-skunk.cyclic.app/products/${id}`;
+
+                if (admin) {
+                    fetch(url, {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json" },
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Only Admin can delete user!',
+                    })
+                }
+            }
+        })
     }
 
     return (
         <div id='Product-list'>
             <div className="container">
-                {/* <h2 className='text-center'>Products List</h2> */}
                 {allProducts.length ? <table className='mt-4'>
                     <tr className="text-center">
                         <th style={{ width: '30%' }}>Image</th>
@@ -35,8 +72,8 @@ const ProductList = () => {
                                 <p><Rating name="read-only" value={product.rating} readOnly /></p>
                             </td>
                             <td>
-                                <button onClick={handleDelete} className="btn btn-primary">Delete</button>
-                                <button className="btn btn-primary ms-3">Update</button>
+                                <button onClick={() => handleDelete(product.id)} className="btn btn-primary">Delete</button>
+                                <Link to={`/dashboard/update-product/${product.id}`} className="btn btn-primary ms-3">Update</Link>
                             </td>
                         </tr>)
                     }

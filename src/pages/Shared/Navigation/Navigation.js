@@ -8,21 +8,17 @@ import phone from '../../../image/phone.png';
 
 const Navigation = () => {
     const { user } = useAuth();
-
-
-
     // When the user scrolls down 200px from the top of the document, slide down the navbar
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () { scrollFunction() };
 
     function scrollFunction() {
-      if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-        document.getElementById("navbar").style.top = "0";
-        document.getElementById("navbar").style.background = "#071c1f";
-      } else {
-        document.getElementById("navbar").style.top = "40px";
-        document.getElementById("navbar").style.background = "transparent";
-    
-      }
+        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+            document.getElementById("navbar").style.top = "0";
+            document.getElementById("navbar").style.background = "#071c1f";
+        } else {
+            document.getElementById("navbar").style.top = "40px";
+            document.getElementById("navbar").style.background = "transparent";
+        }
     }
 
     function openNav() {
@@ -32,7 +28,6 @@ const Navigation = () => {
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
-
 
 
     return (
@@ -54,7 +49,7 @@ const Navigation = () => {
 
                         <NavLink to="/shop" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Shop</NavLink>
 
-                        <NavLink to="/newsDetail" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Blog</NavLink>
+                        <NavLink to="/blog/65a3ed04-759e-4772-bcdb-f371463a8a9f" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Blog</NavLink>
 
                         <NavLink to="/about" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">About</NavLink>
 
@@ -64,7 +59,7 @@ const Navigation = () => {
                             user?.email ? <UserProfile /> : <Link to="/login" className="nav-item nav-link" tabIndex="-1">login</Link>
                         }
 
-                    
+
                     </div>
                 </div>
 
@@ -78,15 +73,11 @@ const Navigation = () => {
 
                     <NavLink to="/destination" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Destination</NavLink>
 
-                    <NavLink to="/blog" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Blog</NavLink>
+                    <NavLink to="/blog/65a3ed04-759e-4772-bcdb-f371463a8a9f" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Blog</NavLink>
 
                     <NavLink to="/about" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">About</NavLink>
 
                     <NavLink to="/contact" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">Contact</NavLink>
-
-                    <NavLink to="/dashboard/myOrder" className={(navInfo) => (navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link")} tabIndex="-1">Dashboard</NavLink>
-
-                    
 
                 </div>
             </div>

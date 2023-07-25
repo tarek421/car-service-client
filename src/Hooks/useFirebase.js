@@ -13,10 +13,17 @@ const useFirebase = () => {
     const [admin, setAdmin] = useState(false);
     const [token, setToken] = useState('');
 
-
     let navigate = useNavigate();
 
     const auth = getAuth();
+
+    useEffect(() => {
+        fetch(`https://tan-glorious-skunk.cyclic.app/admin/${user.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setAdmin(data.admin);
+            });
+    }, [user.email]);
 
     const RegisterUser = (email, password, name) => {
         const loading = "Please Wait...";
@@ -105,14 +112,6 @@ const useFirebase = () => {
         return () => unSubscribed;
     }, [auth])
 
-    useEffect(() => {
-        fetch(`https://tan-glorious-skunk.cyclic.app/admin/${user.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setAdmin(data.admin);
-            });
-    }, [user.email]);
-
 
     const logout = () => {
         setIsLoading(true);
@@ -123,7 +122,7 @@ const useFirebase = () => {
     };
 
     const saveToDatabase = (email, name, photo, method) => {
-        const user = { email, name, photo };
+        const user = { email, name, photo, role: "visitor" };
         const url = `https://tan-glorious-skunk.cyclic.app/users/`
         fetch(url, {
             method: method,

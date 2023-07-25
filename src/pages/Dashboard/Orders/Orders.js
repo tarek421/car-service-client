@@ -7,16 +7,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
-
-
 
 
 const Orders = () => {
     const [OrderData, setOrderData] = useState([]);
     const { token } = useAuth();
+    const [orderStatus, setOrderStatus] = useState({});
 
+    const color = (status) => {
+        if (status === 'approved') {
+            return 'green';
+        } else if (status === 'rejected') {
+            return 'red'
+        } else {
+            return '#6c757d'
+        }
+    }
 
     useEffect(() => {
         const url = `https://tan-glorious-skunk.cyclic.app/orders`;
@@ -45,6 +52,27 @@ const Orders = () => {
         setPage(0);
     };
 
+    const handleChange = (e, id) => {
+        const state = {
+            id: id,
+            value: e.target.value
+        }
+        setOrderStatus(state)
+    }
+
+    useEffect(() => {
+        const url = `https://tan-glorious-skunk.cyclic.app/orders/status/`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(orderStatus)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+    }, [token, orderStatus])
 
     return (
         <Paper sx={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
@@ -77,8 +105,15 @@ const Orders = () => {
                                     <TableCell align="left">{row.price}</TableCell>
                                     <TableCell align="center">
 
-                                        <Button variant='contained'>Not Visited</Button>
-
+                                        <select style={{
+                                            backgroundColor: `${color(row.status)}`, padding: "5px 12px",
+                                            borderRadius: "6px",
+                                            color: "white"
+                                        }} onChange={(e) => handleChange(e, row._id)} name="option" id="option">
+                                            <option value="" selected disabled hidden>{row.status}</option>
+                                            <option value="approved">Approve</option>
+                                            <option value="rejected">Reject</option>
+                                        </select>
 
                                     </TableCell>
                                 </TableRow>

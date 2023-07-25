@@ -1,18 +1,20 @@
 import { faBagShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
 import RelatedProduct from '../right/RelatedProduct';
 import Reviews from './Reviews';
+import { userContext } from '../../../App';
 
 const ProductDetail = ({ id }) => {
     const [products, setProducts] = useState();
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useContext(userContext);
     const [productDetails, setProductDetails] = useState("description");
+
     useEffect(() => {
         fetch(`https://tan-glorious-skunk.cyclic.app/products/${id}`)
             .then(res => res.json())
