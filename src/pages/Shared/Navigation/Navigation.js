@@ -5,9 +5,16 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import UserProfile from './UserProfile';
 import phone from '../../../image/phone.png';
+import { Button } from 'react-bootstrap';
 
 const Navigation = () => {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
+
+    const handleLogOut = () => {
+        logout();
+    };
+
+
     // When the user scrolls down 200px from the top of the document, slide down the navbar
     window.onscroll = function () { scrollFunction() };
 
@@ -66,18 +73,24 @@ const Navigation = () => {
 
                 <div id="mySidenav" className="sidenav">
                     <b className="closebtn" onClick={() => closeNav()}>&times;</b>
-                    {
+                    {/* {
                         user?.email ? <UserProfile /> : <Link to="/login" className="nav-item nav-link" tabIndex="-1">login</Link>
-                    }
+                    } */}
                     <NavLink to='/home' className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Home</NavLink>
 
-                    <NavLink to="/destination" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Destination</NavLink>
+                    <NavLink to="/shop" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Shope</NavLink>
 
                     <NavLink to="/blog/65a3ed04-759e-4772-bcdb-f371463a8a9f" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"}>Blog</NavLink>
 
                     <NavLink to="/about" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">About</NavLink>
 
                     <NavLink to="/contact" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">Contact</NavLink>
+
+                    <NavLink to="/dashboard/orders" className={(navInfo) => navInfo.isActive ? "active nav-item nav-link" : "nav-item nav-link"} tabIndex="-1">Dashboard</NavLink>
+
+                    {
+                        user?.email ? <Button onClick={handleLogOut}>Log Out</Button> : <Link to="/login" className="nav-item nav-link" tabIndex="-1">login</Link>
+                    }
 
                 </div>
             </div>

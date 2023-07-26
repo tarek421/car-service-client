@@ -105,7 +105,7 @@ const AddService = () => {
     return (
         <div id='addProduct'>
             <div className="container">
-                <h6>General Information</h6>
+                <h6>Add Service</h6>
                 <div className="product-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="row">
@@ -142,13 +142,13 @@ const AddService = () => {
 
                         <div className="row mt-4">
                             <label htmlFor="description">Description</label>
-                            <textarea {...register("description", { required: true })} name="description" rows="8"></textarea>
+                            <textarea {...register("description", { required: true })} name="description" rows="4"></textarea>
                             {errors.description && <span>This field is required</span>}
                         </div>
 
                         <div className="row mt-4">
                             <label htmlFor="paragraph2">Paragraph-2</label>
-                            <textarea {...register("paragraph2", { required: true })} name="paragraph2" rows="8"></textarea>
+                            <textarea {...register("paragraph2", { required: true })} name="paragraph2" rows="4"></textarea>
                             {errors.paragraph2 && <span>This field is required</span>}
                         </div>
 

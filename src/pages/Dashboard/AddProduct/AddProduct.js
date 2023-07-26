@@ -1,5 +1,5 @@
 import folderImage from '../../../image/folderImage.png';
-
+import './AddProduct.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';

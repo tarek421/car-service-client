@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import useAuth from '../../../Hooks/useAuth';
+import { ThreeDots } from 'react-loader-spinner';
 
 
 const Orders = () => {
@@ -77,11 +78,11 @@ const Orders = () => {
     return (
         <Paper sx={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
             <TableContainer style={{ height: 600, width: "100%" }} component={Paper}>
-                <Table aria-label="simple table">
+                {OrderData.length ? <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="left">Title</TableCell>
+                            <TableCell align="left">Product Name</TableCell>
                             <TableCell align="left">email</TableCell>
                             <TableCell align="left">phone</TableCell>
                             <TableCell align="left">Total Price</TableCell>
@@ -119,7 +120,7 @@ const Orders = () => {
                                 </TableRow>
                             ))}
                     </TableBody>
-                </Table>
+                </Table> : <ThreeDots width="100" />}
             </TableContainer>
             <TablePagination
                 rowsPerPageOptions={[5, 10, 50]}

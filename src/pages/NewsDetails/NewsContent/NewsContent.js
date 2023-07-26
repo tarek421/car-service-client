@@ -1,14 +1,12 @@
-// import { faFacebook, faLinkedin, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './NewsDetail.css';
 
 const NewsContent = ({ id }) => {
     const [news, setNews] = useState([]);
     const [blogs, setBlogs] = useState([]);
-    // const [catagories, setCatagories] = useState('buisness');
-    // console.log(catagories);
 
 
     const { title, catagory, coverImage, createdTime, description, image1, image2, subtitle1, subtitle2, paragraph1, paragraph2, paragraph3, paragraph4 } = news;
@@ -29,15 +27,6 @@ const NewsContent = ({ id }) => {
             .then(res => res.json())
             .then(data => setBlogs(data))
     }, [catagory])
-
-
-
-    // useEffect(() => {
-    //     const url = `https://tan-glorious-skunk.cyclic.app/blogs/${catagory}`
-    //     fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => setCatagories(data))
-    // },[catagory]);
 
     return (
         <div id="news-detail">
@@ -84,12 +73,6 @@ const NewsContent = ({ id }) => {
                                         <img src="https://i.ibb.co/JpHc7Lr/4.jpg" alt="" />
                                         <h4>Rosalina D. Willaimson</h4>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis distinctio, odio, eligendi suscipit reprehenderit atque.</p>
-                                        {/* <ul className="icon-list">
-                                                <li><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
-                                                <li><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
-                                                <li><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></li>
-                                                <li><a href="#"><FontAwesomeIcon icon={faYoutube} /></a></li>
-                                            </ul> */}
                                     </div>
                                 </div>
                             </div>

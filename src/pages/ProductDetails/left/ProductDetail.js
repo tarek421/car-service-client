@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import RelatedProduct from '../right/RelatedProduct';
 import Reviews from './Reviews';
 import { userContext } from '../../../App';
+import './ProductDetail.css';
 
 const ProductDetail = ({ id }) => {
     const [products, setProducts] = useState();

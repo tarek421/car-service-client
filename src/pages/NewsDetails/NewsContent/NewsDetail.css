@@ -1,0 +1,79 @@
+#news-detail {
+  padding: 50px 0;
+}
+#news-detail .news-content {
+  border: 1px solid #ededed;
+  padding: 50px;
+}
+#news-detail .news-content .catagory-btn {
+  width: 100px;
+  background: rgba(255, 75, 43, 0.8509803922);
+  color: white;
+  text-align: center;
+  padding: 6px;
+}
+#news-detail .news-content .title {
+  font-weight: 700;
+  line-height: 30px;
+  margin: 20px 0;
+}
+#news-detail .about-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#news-detail .about-me li {
+  margin: 8px;
+}
+#news-detail .about-me img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 20px;
+}
+#news-detail .lead {
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: justify;
+}
+#news-detail .image {
+  width: 47%;
+  margin: 10px;
+}
+#news-detail .images {
+  width: 30%;
+  margin-right: 10px;
+}
+#news-detail .profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+#news-detail .catagory ul li {
+  list-style: none;
+  margin-top: 5px;
+}
+#news-detail .catagory ul li a:hover {
+  background: #e53e29;
+}
+#news-detail .catagory ul li a {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  background: #071c1f;
+  color: white;
+  padding: 20px 10px 20px 30px;
+  text-decoration: none;
+}
+#news-detail .catagory ul li a span {
+  background: black;
+  color: white;
+  position: relative;
+  top: -11px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+  float: right;
+}

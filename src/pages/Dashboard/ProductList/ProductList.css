@@ -1,0 +1,20 @@
+#Product-list {
+  margin-top: 25px;
+}
+#Product-list table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#Product-list td,
+#Product-list th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+#Product-list tr:nth-child(even) {
+  background-color: #dddddd;
+}
+#Product-list img {
+  width: 313px;
+}

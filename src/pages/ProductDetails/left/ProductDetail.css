@@ -1,0 +1,30 @@
+#product-detail .active {
+  color: red;
+  font-weight: bold;
+}
+#product-detail p {
+  font-size: 18px;
+}
+#product-detail #reviews h4 {
+  color: rgba(0, 0, 0, 0.877);
+}
+#product-detail #reviews .image {
+  width: 20%;
+  padding: 30px;
+}
+#product-detail #reviews .image img {
+  border-radius: 50%;
+}
+#product-detail #reviews .content {
+  width: 80%;
+}
+#product-detail #reviews .add-review {
+  background: rgb(240, 236, 236);
+  padding: 20px;
+}
+#product-detail #reviews .add-review textarea,
+#product-detail #reviews .add-review input {
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+}

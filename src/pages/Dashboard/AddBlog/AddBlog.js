@@ -101,7 +101,7 @@ const AddBlog = () => {
     return (
         <div id='addProduct'>
             <div className="container">
-                <h6>General Information</h6>
+                <h6>Add Blog</h6>
                 <div className="product-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="row">

@@ -61,7 +61,7 @@ const UpdateProduct = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Only Admin can Product added!',
+                text: 'Only Admin can Product Updated!',
             })
             toast.dismiss(loading);
         }

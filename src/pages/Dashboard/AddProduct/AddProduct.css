@@ -1,0 +1,40 @@
+#addProduct h6 {
+  background: rebeccapurple;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: serif;
+}
+#addProduct .product-content {
+  background-color: #fff;
+  padding: 30px 10px;
+}
+#addProduct input,
+#addProduct select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 3px;
+}
+#addProduct select {
+  padding: 12.5px;
+}
+#addProduct textarea {
+  width: 97.3%;
+  margin: 13px;
+}
+#addProduct .image-upload {
+  text-align: center;
+  border: 1px dashed #9e7f7f;
+  padding: 30px 5px;
+  margin-top: 13px;
+}
+#addProduct .image-upload img {
+  cursor: pointer;
+  width: auto;
+  height: 50px;
+}
+#addProduct .image-upload input {
+  display: block;
+}

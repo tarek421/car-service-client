@@ -3,6 +3,7 @@ import { faTags } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './NewsFeeds.css';
 
 const NewsFeeds = ({ id }) => {
     const [news, setNews] = useState([]);
